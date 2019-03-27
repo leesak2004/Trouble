@@ -10,8 +10,10 @@ void find(int n, int q)
 	for (i = 0; i < q; i++)
 	{
 		scanf("%d", &find_num);
-		idx = n / 2;
-		while(1)
+		s = 0;
+		e = n - 1;
+		idx = (s + e) / 2;
+		while (1)
 		{
 			if (arr[idx] == find_num)
 			{
@@ -20,14 +22,12 @@ void find(int n, int q)
 			}
 			if (arr[idx] > find_num)
 			{
-				s = 0;
-				e = idx;
+				e = idx-1;
 				idx = (s + e) / 2;
 			}
 			else if (arr[idx] < find_num)
 			{
-				s = idx;
-				e = n;
+				s = idx+1;
 				idx = (s + e) / 2;
 			}
 		}
