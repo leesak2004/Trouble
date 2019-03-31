@@ -2,7 +2,6 @@
 
 int b[50000];
 int t, n;
-
 int main()
 {
     int i, j, k, cnt;
