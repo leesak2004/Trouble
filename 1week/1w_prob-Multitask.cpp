@@ -1,30 +1,33 @@
-#include <stdio.h>
-
+#include <iostream>
+using namespace std;
 int main()
 {
-	int t, n;
-	int s, e;
-	int delay = 0;
-	int finish = 0;
-	int i, j;
-
-	scanf("%d", &t);
+	std::ios::sync_with_stdio(false);
+	long long int t, n;
+	long long int st, et;
+	long long int wait, finish, totr;
+	long long int i, j;
+	
+	cin >> t;
 	for (i = 0; i < t; i++)
 	{
-		finish = delay = 0;
-		scanf("%d", &n);
+		cin >> n;
+		wait = finish = totr = 0;
 		for (j = 0; j < n; j++)
 		{
-			scanf("%d %d", &s, &e);
-			if (finish <= s)
-				finish += e;
+			cin >> st >> et;
+			if (st < finish)
+			{
+				totr += finish - st + et;
+				wait += finish - st;
+				finish += et;
+			}
 			else
 			{
-				delay += finish - s;
-				finish += e + delay;
+				totr += et;
+				finish = st + et;
 			}
 		}
-		printf("%d %d\n", delay / n, finish / n);
+		cout << wait / n << " " << totr / n << endl;
 	}
-	return 0;
 }
